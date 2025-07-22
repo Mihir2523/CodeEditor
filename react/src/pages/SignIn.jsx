@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useSetRecoilState } from "recoil";
 import { authAtom } from "../atoms";
 import { useNavigate, Link } from "react-router-dom";
-
+import { URLL } from "../services/huggingFace";
 export default function SignIn() {
   const setAuth = useSetRecoilState(authAtom);
   const [email, setEmail] = useState("");
@@ -17,7 +17,7 @@ export default function SignIn() {
     setError("");
 
     try {
-      const res = await fetch("http://localhost:3000/signin", {
+      const res = await fetch(`${URLL}/signin`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email, password }),
