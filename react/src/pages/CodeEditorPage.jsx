@@ -4,8 +4,7 @@ import { codeAtom, outputAtom, authAtom } from "../atoms";
 import CodeMirror from "@uiw/react-codemirror";
 import { python } from "@codemirror/lang-python";
 import { oneDark } from "@codemirror/theme-one-dark";
-import { generateCode } from "../services/huggingFace";
-
+import { generateCode,URLL } from "../services/huggingFace";
 export default function CodeEditorPage() {
   const [code, setCode] = useRecoilState(codeAtom);
   const [output,setOutput] = useRecoilState(outputAtom);
@@ -22,7 +21,7 @@ export default function CodeEditorPage() {
     setIsExecuting(true);
     
     try {
-      const res = await fetch("http://localhost:3000/submit-code", {
+      const res = await fetch(`${URLL}/submit-code`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -54,7 +53,7 @@ export default function CodeEditorPage() {
 
     while (retries-- > 0) {
       try {
-        const res = await fetch(`http://localhost:3000/code/${id}`, {
+        const res = await fetch(`${URLL}/code/${id}`, {
           headers: { Authorization: `Bearer ${token}` },
         });
 
