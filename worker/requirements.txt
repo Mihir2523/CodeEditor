@@ -1,0 +1,10 @@
+fastapi
+uvicorn
+mongoengine
+redis
+python-dotenv
+numpy
+pandas
+matplotlib
+seaborn
+cloudinary
