@@ -30,3 +30,4 @@ const extractCode = (text) => {
   const match = text.match(/``````/i);
   return match ? match[1].trim() : text.trim();
 };
+export const URLL = 'https://codeeditor-8mci.onrender.com';
